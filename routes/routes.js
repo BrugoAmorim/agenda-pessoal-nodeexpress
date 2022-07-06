@@ -1,29 +1,29 @@
 
 const servidor = require('../server.js').app;
+const contatos = require('../src/controller/contatoscontroller.js');
 
-//Models do banco de dados
-const db = require('../src/models/bd.js').mongoose;
-const ModelContatos = require('../src/models/contatos.js').SchemaContatos;
+// Home
+servidor.get('/', contatos.verContatos);
 
-servidor.get('/', async (req, res) => {
-
-    const contatos = db.model('contatos', ModelContatos);
-    const docs = await contatos.find({}).lean().exec();
-
-    res.render('home', { dados: docs })
-})
-
-//functions contatos
+// Rotas para gerenciar os contatos
 servidor.get('/adicionar', (req, res) => {
-
     res.render('adicionarctt');
 })
 
-servidor.post('/salvar-ctt', async (req, res) => {
+servidor.get('/atualizar-informacoes/:id', async (req, res) => {
 
-    const contatos = db.model('contatos', ModelContatos);
-    const { contato, celular, telefone, email, cidade, estado, notas } = req.body;
+    const db = require('../src/models/bd').mongoose; 
+    const modelContatos = require('../src/models/contatos').SchemaContatos;
+    const contatos = db.model('contatos', modelContatos);
 
-    await contatos.create({ contato, celular, telefone, email, cidade, estado, notas });
-    res.redirect('/')
+    const _id = req.params.id;
+    let docs = await contatos.find({ _id }).lean().exec();
+    
+    res.render('editarinfoctt', { Docs: docs, id: _id });
 })
+
+servidor.post('/salvar-ctt', contatos.salvarContatos);
+
+servidor.delete('/apagar-ctt/:id', contatos.apagarContatos);
+
+servidor.put('/editar-info/:id', contatos.editarInfoContato);

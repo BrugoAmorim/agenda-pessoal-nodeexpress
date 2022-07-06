@@ -17,12 +17,22 @@
         </thead>
         <tbody>
             {{#each dados}}
-            <tr>
-                <td>{{contato}}</td>
-                <td>{{telefone}}</td>
-                <td>{{celular}}</td>
-                <td>{{email}}</td>
-            </tr>
+                <tr>
+                    <td>{{contato}}</td>
+                    <td>{{telefone}}</td>
+                    <td>{{celular}}</td>
+                    <td>{{email}}</td>
+                    <td>
+                        <form action="/apagar-ctt/{{_id}}?method=DELETE" method="post">
+                            <button>apagar</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/atualizar-informacoes/{{_id}}" method="get">
+                            <button>editar</button>
+                        </form>
+                    </td>
+                </tr>
             {{/each}}
         </tbody>
     </table>

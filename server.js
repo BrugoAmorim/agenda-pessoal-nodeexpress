@@ -5,13 +5,17 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
-// Configurando handlebars
+app.use(express.static(__dirname + '/public'));
+
+// Configurações handlebars
 const handlebars = require('express-handlebars');
 app.engine('handlebars', handlebars.engine());
 app.set('view engine', 'handlebars');
 app.set('views', '../views');
 
-app.use(express.static(__dirname + '/public'));
+// Configurações method-override
+const methodOverride = require('method-override');
+app.use(methodOverride('method'));
 
 module.exports = { app };
 
