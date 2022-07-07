@@ -1,0 +1,150 @@
+body{
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-image: linear-gradient(#569aff, #569aff);
+}
+
+nav{
+    width: 100%;
+    height: 13%;
+    background-color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-titulo{
+    height: 70%;
+    width: 30%;
+
+    text-align: center;
+    color: white;
+}
+
+.links{
+    height: 70%;
+    width: 60%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.outras-funcionalidades a, .voltar a, .perfil a{
+    text-decoration: none;
+}
+
+.outras-funcionalidades{
+    height: 45%;
+    width: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-decoration: none;
+
+    color: white;
+}
+
+.perfil{
+    height: 45%;
+    width: 15%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.voltar{
+    height: 45%;
+    width: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container{
+    height: 87%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contatos{
+    height: 90%;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.bloco-addcontato{
+    height: 85%;
+    width: 45%;
+    border-radius: 6px;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.inputs{
+    height: auto;
+    width: 95%;
+    padding: 1%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.inputs input{
+    margin: 1%;
+}
+
+.notas{
+    height: 30%;
+    width: 95%;
+    padding: 1%;
+    display: flex;
+}
+
+.eventos{
+    height: 10%;
+    width: 95%;
+    padding-right: 5%;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bloco-vercontatos{
+    height: 95%;
+    width: 50%;
+    background-color: white;
+
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.informacoes-contatos{
+    height: 90%;
+    width: 90%;
+
+    display: block;
+    overflow-y: auto;
+}

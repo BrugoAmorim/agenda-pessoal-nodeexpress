@@ -18,7 +18,7 @@ async function salvarContatos(req, res){
 async function verContatos(req, res){
 
     const docs = await contatos.find({}).lean().exec();
-    res.render('home', { dados: docs });
+    res.render('contatos', { dados: docs });
 }
 
 async function apagarContatos(req, res){

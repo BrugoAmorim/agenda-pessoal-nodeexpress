@@ -3,14 +3,16 @@ const servidor = require('../server.js').app;
 const contatos = require('../src/controller/contatoscontroller.js');
 
 // Home
-servidor.get('/', contatos.verContatos);
-
-// Rotas para gerenciar os contatos
-servidor.get('/adicionar', (req, res) => {
-    res.render('adicionarctt');
+servidor.get('/', (req, res) => {
+    res.render('home');
 })
 
-servidor.get('/atualizar-informacoes/:id', async (req, res) => {
+// Rotas para gerenciar os contatos
+servidor.get('/agenda-contatos', contatos.verContatos);
+
+servidor.post('/salvar-ctt', contatos.salvarContatos);
+
+servidor.get('/informacoes-contato/:id', async (req, res) => {
 
     const db = require('../src/models/bd').mongoose; 
     const modelContatos = require('../src/models/contatos').SchemaContatos;
@@ -20,10 +22,5 @@ servidor.get('/atualizar-informacoes/:id', async (req, res) => {
     let docs = await contatos.find({ _id }).lean().exec();
     
     res.render('editarinfoctt', { Docs: docs, id: _id });
+    
 })
-
-servidor.post('/salvar-ctt', contatos.salvarContatos);
-
-servidor.delete('/apagar-ctt/:id', contatos.apagarContatos);
-
-servidor.put('/editar-info/:id', contatos.editarInfoContato);

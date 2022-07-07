@@ -1,40 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus contatos</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <table>
-        <thead>
-            <th>contato</th>
-            <th>telefone</th>
-            <th>celular</th>
-            <th>email</th>
-        </thead>
-        <tbody>
-            {{#each dados}}
-                <tr>
-                    <td>{{contato}}</td>
-                    <td>{{telefone}}</td>
-                    <td>{{celular}}</td>
-                    <td>{{email}}</td>
-                    <td>
-                        <form action="/apagar-ctt/{{_id}}?method=DELETE" method="post">
-                            <button>apagar</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="/atualizar-informacoes/{{_id}}" method="get">
-                            <button>editar</button>
-                        </form>
-                    </td>
-                </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    <nav>
+        <div class="container-titulo">
+            <h1>Agenda Pessoal</h1>
+        </div>
+        <div class="desenvolvedor">
+            <span class="lead">Desenvolvido por &reg;BrugoAmorim, 2022</span>
+        </div>
+    </nav>
+    <article>
+        <div class="container">
+            <div class="page-contatos">
+                <div class="bloco-img">
+                    <img src="/images/img-contatos.jpg" alt="imagem caderno de contatos" height="100%">
+                </div>
+                <div class="bloco-titulo">
+                    <h3>Meus contatos:</h3>
+                </div>
+                <div class="descricao">
+                    <span class="lead">Com está aplicação você pode gerenciar os números de telefone e email de seus familiares, colegas e afins. Fácil, rápido e intuitivo.</span>
+                </div>
+                <div class="entrar">
+                    <div class="botao-entrar">
+                        <a href="/agenda-contatos" class="btn btn-primary">Entrar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="page-bloco-notas">
+                <div class="em-breve">
+                    <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-32.png" height="20%">
+                    <p>Em Breve!</p>
+                </div>
+            </div>
+            <div class="page-lista-tarefas">
+                <div class="em-breve">
+                    <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-32.png" height="20%">
+                    <p>Em Breve!</p>
+                </div>
+            </div>
+        </div>
+    </article>
 </body>
 </html>
