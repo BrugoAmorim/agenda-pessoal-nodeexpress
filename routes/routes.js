@@ -10,7 +10,7 @@ servidor.get('/', (req, res) => {
 // Rotas para gerenciar os contatos
 servidor.get('/agenda-contatos', contatos.verContatos);
 
-servidor.post('/salvar-ctt', contatos.salvarContatos);
+servidor.post("/novo-contato", contatos.salvarContatos);
 
 servidor.get('/informacoes-contato/:id', async (req, res) => {
 
@@ -19,8 +19,15 @@ servidor.get('/informacoes-contato/:id', async (req, res) => {
     const contatos = db.model('contatos', modelContatos);
 
     const _id = req.params.id;
-    let docs = await contatos.find({ _id }).lean().exec();
-    
-    res.render('editarinfoctt', { Docs: docs, id: _id });
-    
+    let docs = await contatos.findOne({ _id }).lean().exec();
+   
+    res.render('infocontato', { Docs: docs, id: _id, Nome: docs.contato });
+})
+
+servidor.put('/editar-informacoes/:id', (req, res) => {
+    //Metodo de editar contato
+})
+
+servidor.delete('/apagar-contato/:id', (req, res) =>{
+    //Funcao para apagar contato
 })

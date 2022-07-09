@@ -1,0 +1,64 @@
+body{
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-image: linear-gradient(#569aff, #569aff);
+}
+
+.info-contato{
+    height: 90%;
+    width: 45%;
+
+    border-radius: 8px;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.info-contato input{ margin: 1%; }
+
+.contato-email, .cidade-estado, .telefone-celular{
+    height: 10%;
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.notas{
+    height: 30%;
+    width: 95%;
+}
+
+.notas textarea{
+    height: 100%;
+}
+
+.formulario{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.eventos{
+    height: 10%;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.eventos button{ width: 20%; }

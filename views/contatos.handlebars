@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus contatos</title>
     <link rel="stylesheet" href="/css/contatos.css">
+    <link rel="stylesheet" href="/css/barranavegacao.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -18,9 +19,6 @@
                 <a href="#">Bloco de notas</a> -
                 <a href="#">Lista de tarefas</a>
             </div>
-            <div class="perfil">
-                <a href="#">Meu perfil</a>
-            </div>
             <div class="voltar">
                 <a href="/">Voltar</a>
             </div>
@@ -28,38 +26,51 @@
     </nav>
     <div class="container">
         <div class="contatos">
-            <div class="bloco-addcontato">
-                    <div class="inputs">
-                        <input type="text" class="form-control" placeholder="Nome">
-                        <input type="text" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="inputs">
-                        <input type="text" class="form-control" placeholder="Celular">
-                        <input type="text" class="form-control" placeholder="Telefone">
-                    </div>
-                    <div class="inputs">
-                        <input type="text" class="form-control" placeholder="Estado">
-                        <input type="text" class="form-control" placeholder="Cidade">
-                    </div>
-                    <div class="notas">
-                        <textarea cols="30" rows="10" class="form-control" placeholder="Escreva uma breve descricao sobre o contato."></textarea>
-                    </div>
-                    <div class="eventos">
-                        <button class="btn btn-primary">Salvar</button>
-                    </div>
+            <form action="/novo-contato" method="post" class="bloco-addcontato">
+                <div class="inputs">
+                    <input type="text" class="form-control" name="contato" placeholder="Nome">
+                    <input type="text" class="form-control" name="email" placeholder="Email">
                 </div>
-                <div class="bloco-vercontatos">
-                    <div class="informacoes-contatos">
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <td>Bruno Gomes</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="inputs">
+                    <input type="text" class="form-control" name="celular" placeholder="Celular">
+                    <input type="text" class="form-control" name="telefone" placeholder="Telefone">
                 </div>
+                <div class="inputs">
+                    <input type="text" class="form-control" name="estado" placeholder="Estado">
+                    <input type="text" class="form-control" name="cidade" placeholder="Cidade">
+                </div>
+                <div class="notas">
+                    <textarea cols="30" rows="10" class="form-control" name="notas" placeholder="Escreva uma breve descricao sobre o contato."></textarea>
+                </div>
+                <div class="eventos-messages">
+                    {{#if erro}}
+                        <div class="exibir-mensagens">
+                            <p class="lead">{{msg}}</p>
+                        </div>
+                    {{/if}}
+                    <button class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+            <div class="bloco-vercontatos">
+                <div class="informacoes-contatos">
+                    <table class="table table-hover">
+                        <tbody>
+                            {{#each dados}}
+                                <form action="/informacoes-contato/{{_id}}" method="get">
+                                    <tr>
+                                        <td>
+                                            <button class="editar-informacoes">
+                                                {{contato}}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </form>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>    
+    </div>
 </body>
 </html>

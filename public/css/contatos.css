@@ -9,76 +9,6 @@ body{
     background-image: linear-gradient(#569aff, #569aff);
 }
 
-nav{
-    width: 100%;
-    height: 13%;
-    background-color: black;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.container-titulo{
-    height: 70%;
-    width: 30%;
-
-    text-align: center;
-    color: white;
-}
-
-.links{
-    height: 70%;
-    width: 60%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.outras-funcionalidades a, .voltar a, .perfil a{
-    text-decoration: none;
-}
-
-.outras-funcionalidades{
-    height: 45%;
-    width: 30%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    text-decoration: none;
-
-    color: white;
-}
-
-.perfil{
-    height: 45%;
-    width: 15%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.voltar{
-    height: 45%;
-    width: 10%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.container{
-    height: 87%;
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .contatos{
     height: 90%;
     width: 90%;
@@ -121,13 +51,22 @@ nav{
     display: flex;
 }
 
-.eventos{
+.eventos-messages{
     height: 10%;
     width: 95%;
+    padding-left: 5%;
     padding-right: 5%;
 
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.exibir-mensagens{
+    height: 80%;
+    width: auto;
+    border-bottom: 2px solid red;
 }
 
 .bloco-vercontatos{
@@ -137,7 +76,7 @@ nav{
 
     border-radius: 6px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 }
 
@@ -147,4 +86,14 @@ nav{
 
     display: block;
     overflow-y: auto;
+}
+
+.editar-informacoes{
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
 }
