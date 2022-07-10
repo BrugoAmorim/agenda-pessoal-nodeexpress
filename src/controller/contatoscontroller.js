@@ -6,8 +6,6 @@ const ModelContatos = require('../models/contatos.js').SchemaContatos;
 // collection Contatos
 const contatos = db.model('contatos', ModelContatos);
 
-const swal = require('sweetalert')
-
 const validar = require('../services/contatosservices.js').validarCamposContato;
 
 async function salvarContatos(req, res){
@@ -16,7 +14,7 @@ async function salvarContatos(req, res){
     if(resultado.erro == true){
 
         const docs = await contatos.find({}).lean().exec();
-        res.render('contatos', { dados: docs, msg: resultado.msg ,erro: resultado.erro });
+        res.render('contatos', { dados: docs, msg: resultado.msg, erro: resultado.erro });
     }
     else{
         const { contato, celular, telefone, email, cidade, estado, notas } = resultado.doc;
@@ -32,7 +30,7 @@ async function verContatos(req, res){
     res.render('contatos', { dados: docs });
 }
 
-async function apagarContatos(req, res){
+async function apagarContato(req, res){
 
     const idContato = req.params.id;
     await contatos.findOneAndDelete({ _id: idContato });
@@ -42,12 +40,20 @@ async function apagarContatos(req, res){
 
 async function editarInfoContato(req, res){
 
-    const _id = req.params.id;
-    const { contato, celular, telefone, email, cidade, estado, notas } = req.body;
+    const resultado = await validar(req.body);
 
-    await contatos.findOneAndUpdate({ _id }, {$set: { contato, celular, telefone, email, cidade, estado, notas }}, { new: true });
+    if(resultado.erro == true){
 
-    res.redirect('/agenda-contatos');
+        res.render('infocontato', { Docs: req.body, id: req.params.id, erro: true })
+    }
+    else{
+        const _id = req.params.id;  
+        const { contato, celular, telefone, email, cidade, estado, notas } = resultado.doc;
+
+        await contatos.findOneAndUpdate({ _id }, {$set: { contato, celular, telefone, email, cidade, estado, notas }}, { new: true });
+
+        res.redirect('/agenda-contatos');
+    }
 }
 
-module.exports = { salvarContatos, verContatos, apagarContatos, editarInfoContato };
+module.exports = { salvarContatos, verContatos, apagarContato, editarInfoContato };

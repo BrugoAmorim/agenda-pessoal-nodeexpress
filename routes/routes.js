@@ -21,13 +21,9 @@ servidor.get('/informacoes-contato/:id', async (req, res) => {
     const _id = req.params.id;
     let docs = await contatos.findOne({ _id }).lean().exec();
    
-    res.render('infocontato', { Docs: docs, id: _id, Nome: docs.contato });
+    res.render('infocontato', { Docs: docs, id: _id });
 })
 
-servidor.put('/editar-informacoes/:id', (req, res) => {
-    //Metodo de editar contato
-})
+servidor.put('/editar-informacoes/:id', contatos.editarInfoContato)
 
-servidor.delete('/apagar-contato/:id', (req, res) =>{
-    //Funcao para apagar contato
-})
+servidor.delete('/apagar-contato/:id', contatos.apagarContato)

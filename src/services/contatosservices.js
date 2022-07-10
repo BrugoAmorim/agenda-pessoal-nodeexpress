@@ -1,8 +1,8 @@
 
 async function validarCamposContato(req, res){
 
-    if(req.contato.length == 0)
-        return { erro: true, msg: 'Informe o Nome do contato'}
+    if(req.contato.length < 4)
+        return { erro: true, msg: 'Nome do contato inválido'}
 
     return { erro: false, doc: req };
 }

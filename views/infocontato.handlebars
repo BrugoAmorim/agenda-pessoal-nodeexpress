@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informçõoes do contato</title>
+    <title>Informaçõoes do contato</title>
     <link rel="stylesheet" href="/css/infocontato.css">
     <link rel="stylesheet" href="/css/barranavegacao.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 <body>
     <nav>
         <div class="container-titulo">
-            <h1>Contato: {{Nome}}</h1>
+            <h1>Contato: {{Docs.contato}}</h1>
         </div>
         <div class="links">
             <div class="outras-funcionalidades">
@@ -32,25 +32,26 @@
                     <p class="lead">Edite as informações por aqui: </p>
                 </div>
                 <div class="contato-email">
-                    <input type="text" class="form-control" value="{{Docs.contato}}" placeholder="Nome">
-                    <input type="text" class="form-control" value="{{Docs.email}}" placeholder="Email">
+                    <input type="text" name="contato" class="form-control" value="{{Docs.contato}}" placeholder="Nome">
+                    <input type="text" name="email" class="form-control" value="{{Docs.email}}" placeholder="Email">
                 </div>
                 <div class="telefone-celular">
-                    <input type="text" class="form-control" value="{{Docs.telefone}}" placeholder="N° telefone">
-                    <input type="text" class="form-control" value="{{Docs.celular}}" placeholder="N° celular">
+                    <input type="text" name="telefone" class="form-control" value="{{Docs.telefone}}" placeholder="N° telefone">
+                    <input type="text" name="celular" class="form-control" value="{{Docs.celular}}" placeholder="N° celular">
                 </div>
                 <div class="cidade-estado">
-                    <input type="text" class="form-control" value="{{Docs.cidade}}" placeholder="Cidade">
-                    <input type="text" class="form-control" value="{{Docs.estado}}" placeholder="Estado">
+                    <input type="text" name="cidade" class="form-control" value="{{Docs.cidade}}" placeholder="Cidade">
+                    <input type="text" name="estado" class="form-control" value="{{Docs.estado}}" placeholder="Estado">
                 </div>
                 <div class="notas">
-                    <textarea cols="30" rows="10" class="form-control" placeholder="Escreva uma breve descrição sobre o contato.">{{Docs.notas}}</textarea>
+                    <textarea cols="30" rows="10" name="notas" class="form-control" placeholder="Escreva uma breve descrição sobre o contato.">{{Docs.notas}}</textarea>
                 </div>
                 <div class="eventos">
-                    <button class="btn btn-success">Salvar</button>
+                    <input type="submit" value="Salvar" class="btn btn-success">
+                    <input type="submit" value="Excluir" class="btn btn-danger" formaction="/apagar-contato/{{id}}?method=DELETE">
                 </div>
             </form>
         </div>
     </div>
 </body>
-</html>
+</html> 
