@@ -10,14 +10,14 @@ app.use(express.static(__dirname + '/public'));
 // Configurações handlebars
 const handlebars = require('express-handlebars');
 app.engine('handlebars', handlebars.engine());
-app.set('view engine', 'handlebars');
+app.set('view engine', '.handlebars');
 app.set('views', '../views');
 
 // Configurações method-override
 const methodOverride = require('method-override');
 app.use(methodOverride('method'));
 
-module.exports = { app };
+module.exports = { app, handlebars };
 
 app.listen(3000, () => {
 

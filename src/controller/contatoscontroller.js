@@ -43,7 +43,7 @@ async function editarInfoContato(req, res){
     const resultado = await validar(req.body);
 
     if(resultado.erro == true){
-
+        
         res.render('infocontato', { Docs: req.body, id: req.params.id, erro: true })
     }
     else{

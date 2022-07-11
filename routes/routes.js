@@ -27,3 +27,9 @@ servidor.get('/informacoes-contato/:id', async (req, res) => {
 servidor.put('/editar-informacoes/:id', contatos.editarInfoContato)
 
 servidor.delete('/apagar-contato/:id', contatos.apagarContato)
+
+// Rotas para gerenciar as funcionalidades do bloco de notas
+servidor.get('/agenda-blocodenotas', (req, res) => {
+
+    res.render('bloconotas');
+})
