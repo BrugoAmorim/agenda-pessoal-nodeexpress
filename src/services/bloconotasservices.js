@@ -37,4 +37,14 @@ async function validarUpdate(idanotacao, req){
     return req;
 }
 
-module.exports = { validarNovaAnotacao, validarUpdate }
+async function validarDelete(id){
+    
+    const registro = await BlocoNotas.findOne({ _id: id });
+
+    if(registro == null)
+        return { erro: true, msg: 'Esta anotação não foi encontrada'};
+    
+    return { erro: false };
+}
+
+module.exports = { validarNovaAnotacao, validarUpdate, validarDelete }

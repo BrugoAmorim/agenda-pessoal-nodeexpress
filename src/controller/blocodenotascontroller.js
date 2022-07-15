@@ -61,4 +61,19 @@ async function editarAnotacao(req, res){
     }
 }
 
-module.exports = { buscarAnotacoes, novaAnotacao, editarAnotacao };
+async function apagarAnotacao(req, res){
+
+    const validar = await validacoes.validarDelete(req.params.id);
+    if(validar.erro == true){
+
+        return res.status(400).json({ erro: validar.msg, codigo: 400 });
+    }
+    else{
+        const _id = req.params.id;
+
+        await BlocoNotas.findOneAndDelete({_id});
+        return res.status(200).json({msg: 'A anotação foi apagada!', codigo: 200});
+    }
+}
+
+module.exports = { buscarAnotacoes, novaAnotacao, editarAnotacao, apagarAnotacao };

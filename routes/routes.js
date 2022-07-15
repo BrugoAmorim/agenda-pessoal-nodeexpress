@@ -35,3 +35,5 @@ servidor.get('/agenda-blocodenotas', blocodenotas.buscarAnotacoes)
 servidor.post('/adicionar', blocodenotas.novaAnotacao);
 
 servidor.put('/editar-texto/:id', blocodenotas.editarAnotacao);
+
+servidor.delete('/apagar-texto/:id', blocodenotas.apagarAnotacao);
