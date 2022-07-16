@@ -28,16 +28,14 @@ async function novaAnotacao(req, res){
 
     if(caixote.erro){
 
-        return res.status(400).json({ erro: caixote.msg, codigo: 400 });
+        res.render('criaranotacao', { erro: true, msg: caixote.msg, campos: req.body });
     }
     else{
         const { nome, conteudo } = caixote;
         const { criado, atualizado } = new Date();
 
-        const doc = await BlocoNotas.create({nome, conteudo, criado, atualizado});
-        const formatado = conversor.criarModel(doc);
-
-        return res.status(200).json(formatado);
+        await BlocoNotas.create({nome, conteudo, criado, atualizado});
+        res.redirect('/agenda-blocodenotas');
     }
 }
 

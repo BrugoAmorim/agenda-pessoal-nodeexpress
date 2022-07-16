@@ -78,14 +78,18 @@ body{
     overflow-y: auto;
 }
 
-.evento-novo-bloco button{ 
+.evento-novo-bloco a{ 
     width: 100%;
     border: none;
     border-radius: 8px;
     background-color: transparent;
+
+    display: flex;
+    justify-content: center;
 }
 
-.evento-novo-bloco button:hover{
-    transition: 0.3s;
+.evento-novo-bloco a:hover{
+    transition: 0.2s;
+    border: none;
     background-color: rgb(194, 194, 194);
 }

@@ -32,6 +32,11 @@ servidor.delete('/apagar-contato/:id', contatos.apagarContato)
 // Rotas para gerenciar as funcionalidades do bloco de notas
 servidor.get('/agenda-blocodenotas', blocodenotas.buscarAnotacoes)
 
+servidor.get('/criar-anotacao', async (req, res) => {
+
+    res.render('criaranotacao');
+});
+
 servidor.post('/adicionar', blocodenotas.novaAnotacao);
 
 servidor.put('/editar-texto/:id', blocodenotas.editarAnotacao);

@@ -1,0 +1,67 @@
+body{
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+
+    background-image: linear-gradient(rgb(24, 224, 174), rgb(89, 255, 67));
+}
+
+.caixote{
+    height: 90%;
+    width: 75%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.eventos-mensagens{
+    height: 95%;
+    width: 35%;
+    margin: 1%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.evento-salvar{
+    height: 30%;
+    width: 100%;
+    padding: 5%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    border-radius: 8px;
+    background-color: white;
+}
+
+.mensagem{
+    height: 20%;
+    width: 90%;
+    margin: 2%;
+    padding: 2%;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    color: white;
+    border-radius: 8px;
+    background-color: #191919;
+}
+
+.evento-salvar button{ width: 55%; }
+
+.form-anotacao{
+    height: 95%;
+    width: 60%;
+    margin: 1%;
+}
+
+.form-anotacao textarea{ height: 100%; }

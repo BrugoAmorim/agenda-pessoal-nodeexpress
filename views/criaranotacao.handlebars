@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar anotação</title>
+    <link rel="stylesheet" href="/css/barranavegacao.css">
+    <link rel="stylesheet" href="/css/criaranotacao.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav>
+        <div class="container-titulo">
+            <h1>Nova Anotação</h1>
+        </div>
+        <div class="links">
+            <div class="outras-funcionalidades">
+                <a href="/agenda-contatos">Meus contatos</a> -
+                <a href="#">Lista de tarefas</a>
+            </div>
+            <div class="voltar">
+                <a href="/">Home</a>
+                <a href="/agenda-blocodenotas">Voltar</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <form action="/adicionar" method="post" class="caixote">
+            <div class="eventos-mensagens">
+                <div class="evento-salvar">
+                    <input type="text" value="{{campos.nome}}" name="nome" placeholder="Titulo do texto" class="form-control">
+                    <button class="btn btn-success">Salvar</button>
+                </div>
+                {{#if erro}}
+                    <div class="mensagem">
+                        <span class="lead">{{msg}}</span>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="form-anotacao">
+                <textarea name="conteudo" class="form-control" cols="30" rows="10" placeholder="Escreva seu texto aqui.">{{campos.conteudo}}</textarea>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
