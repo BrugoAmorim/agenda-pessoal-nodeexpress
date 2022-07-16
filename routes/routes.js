@@ -37,6 +37,18 @@ servidor.get('/criar-anotacao', async (req, res) => {
     res.render('criaranotacao');
 });
 
+servidor.get('/detalhes-anotacao/:id', async (req, res) => {
+
+    const db = require('../src/models/bd').mongoose;
+    const SchemaBloconotas = require('../src/models/blocodenotas').SchemaBloconotas;
+    const Bloconotas = db.model('blocodenotas', SchemaBloconotas);
+
+    const utils = require('../src/utils/bloconotasutils');
+
+    const doc = utils.criarModel(await Bloconotas.findOne({ _id: req.params.id }));
+    res.render('informacoesanotacao', { Campos: doc });
+})
+
 servidor.post('/adicionar', blocodenotas.novaAnotacao);
 
 servidor.put('/editar-texto/:id', blocodenotas.editarAnotacao);

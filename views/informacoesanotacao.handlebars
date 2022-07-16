@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Anotação</title>
+    <link rel="stylesheet" href="/css/infoanotacao.css">
+    <link rel="stylesheet" href="/css/barranavegacao.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav>
+        <div class="container-titulo">
+            <h1>Minhas Anotações</h1>
+        </div>
+        <div class="links">
+            <div class="outras-funcionalidades">
+                <a href="/agenda-contatos">Meus contatos</a> -
+                <a href="#">Lista de tarefas</a>
+            </div>
+            <div class="voltar">
+                <a href="/">Home</a>
+                <a href="/agenda-blocodenotas">Voltar</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <form action="/editar-texto/{{Campos.id}}?method=PUT" method="post" class="bloco-editar">
+            <div class="informacoes-alertas">
+                <div class="info-eventos">
+                    <div class="titulo-salvar">
+                        <input type="text" name="nome" value="{{Campos.titulo}}" class="form-control" placeholder="Titulo do texto">
+                        <button class="btn btn-success">Salvar</button>
+                    </div>   
+                    <div class="criado-e-atualizado">
+                        <strong class="lead">Criado Em:</strong>
+                        <p>{{Campos.criado}}</p>
+                        <strong class="lead">Ultima Atualização:</strong>
+                        <p>{{Campos.atualizado}}</p>
+                    </div>
+                    <div class="excluir">
+                        <button formaction="/apagar-texto/{{Campos.id}}?method=DELETE" class="btn btn-danger">Excluir</button>
+                    </div>
+                </div>
+                {{#if erro}}
+                    <div class="alerta">
+                        <span class="lead">{{msg}}</span>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="bloco-anotacao">
+                <textarea name="conteudo" class="form-control" placeholder="Escreva seu texto aqui." cols="30" rows="10">{{Campos.conteudo}}</textarea>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

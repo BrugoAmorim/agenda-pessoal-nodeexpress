@@ -42,12 +42,18 @@
                         <thead>
                             <th>Anotação</th>
                             <th>Criado em:</th>
+                            <th></th>
                         </thead>
                         <tbody>
                             {{#each Docs}}
                                 <tr>
                                     <td>{{titulo}}</td>
                                     <td>{{criado}}</td>
+                                    <td>
+                                        <form action="/detalhes-anotacao/{{id}}" method="get">
+                                            <button class="btn btn-info btn-sm">Info</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             {{/each}}
                         </tbody>

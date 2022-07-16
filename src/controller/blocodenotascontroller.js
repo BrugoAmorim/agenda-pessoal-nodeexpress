@@ -46,16 +46,19 @@ async function editarAnotacao(req, res){
 
     if(caixote.erro == true){
 
-        return res.status(400).json({ erro: caixote.msg, codigo: 400 });
+        const doc = conversor.criarModel(await BlocoNotas.findOne({_id: idAnotacao}));
+        doc.titulo = req.body.nome;
+        doc.conteudo = req.body.conteudo;
+
+        res.render('informacoesanotacao', { erro: true, msg: caixote.msg, Campos: doc });
     }
     else{
         const { nome, conteudo } = caixote;
         const atualizado = new Date();
 
-        const regAlterado = await BlocoNotas.findOneAndUpdate({ _id: idAnotacao }, { $set:{ nome, conteudo, atualizado}}, { returnDocument: 'after' });
+        await BlocoNotas.findOneAndUpdate({ _id: idAnotacao }, { $set:{ nome, conteudo, atualizado}}, { returnDocument: 'after' });
     
-        const formatado = conversor.criarModel(regAlterado);
-        return res.status(200).json(formatado);
+        res.redirect('/agenda-blocodenotas');
     }
 }
 
@@ -70,7 +73,7 @@ async function apagarAnotacao(req, res){
         const _id = req.params.id;
 
         await BlocoNotas.findOneAndDelete({_id});
-        return res.status(200).json({msg: 'A anotação foi apagada!', codigo: 200});
+        res.redirect('/agenda-blocodenotas');
     }
 }
 
