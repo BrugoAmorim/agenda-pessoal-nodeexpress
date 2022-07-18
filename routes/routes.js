@@ -1,7 +1,10 @@
 
 const servidor = require('../server.js').app;
+
+// controllers
 const contatos = require('../src/controller/contatoscontroller.js');
 const blocodenotas = require('../src/controller/blocodenotascontroller.js');
+const categorias = require('../src/controller/categoriascontroller.js');
 
 // Home
 servidor.get('/', (req, res) => {
@@ -54,3 +57,8 @@ servidor.post('/adicionar', blocodenotas.novaAnotacao);
 servidor.put('/editar-texto/:id', blocodenotas.editarAnotacao);
 
 servidor.delete('/apagar-texto/:id', blocodenotas.apagarAnotacao);
+
+// Rotas para gerenciar os metodos categorias
+servidor.get('/agenda-categorias', categorias.listarCategorias);
+
+servidor.post('/adicionar-categoria', categorias.adicionarCategoria);

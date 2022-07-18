@@ -26,4 +26,24 @@ function criarModel(req){
     return obj;
 }
 
-module.exports = { criarModel };
+function ordenarAnotacoes(req, query){
+    
+    if(query == "maisantigos"){
+        return req.sort((a, b) => {
+            
+            if(a.criado < b.criado)
+                return -1;
+        })
+    }
+    else if(query == "maisnovos"){
+        return req.sort((a, b) => {
+            
+            if(a.criado > b.criado)
+                return -1;
+        })
+    }
+    else
+        return req;
+}
+
+module.exports = { criarModel, ordenarAnotacoes };

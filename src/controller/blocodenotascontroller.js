@@ -12,14 +12,15 @@ async function buscarAnotacoes(req, res){
 
     const anotacoes = [];
     const docs = await BlocoNotas.find({}).lean().exec();
-
+    
     docs.map((item) => {
-
+        
         const obj = conversor.criarModel(item);
         anotacoes.push(obj);
     })
-
-    res.render('bloconotas', { Docs: anotacoes });
+    
+    let arrayordenado = conversor.ordenarAnotacoes(anotacoes, req.query.ordenar);
+    res.render('bloconotas', { Docs: arrayordenado });
 }
 
 async function novaAnotacao(req, res){
@@ -70,7 +71,7 @@ async function apagarAnotacao(req, res){
         return res.status(400).json({ erro: validar.msg, codigo: 400 });
     }
     else{
-        const _id = req.params.id;
+        const _id = req.params.id;  
 
         await BlocoNotas.findOneAndDelete({_id});
         res.redirect('/agenda-blocodenotas');
