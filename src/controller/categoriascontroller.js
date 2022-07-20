@@ -8,10 +8,12 @@ const validar = require('../services/categoriasservices.js');
 
 async function listarCategorias(req, res){
 
-    await Categorias.find({}).lean().exec().then((docs) => {
+    /* await Categorias.find({}).lean().exec().then((docs) => {
 
         return res.status(200).json(docs);
-    });
+    }); */
+
+    res.render('categorias');
 }
 
 async function adicionarCategoria(req, res){

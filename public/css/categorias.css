@@ -1,0 +1,102 @@
+body{
+    height: 100vh;
+    background-image: linear-gradient(rgb(255, 189, 67), rgb(129, 38, 129));
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.minhas-categorias{
+    height: 90%;
+    width: 85%;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+
+    background-color: #191919;
+}
+
+.evento{
+    height: 95%;
+    width: 25%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bloco-categorias{
+    height: 95%;
+    width: 70%;
+    
+    display: block;
+    overflow-y: auto;
+
+    border-left: 1px solid white;
+}
+
+.listagem-categorias{
+    height: 100%;
+    width: 100%;
+    padding: 2%;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.categoria{
+    min-height: 50%;
+    max-height: 50%;
+    width: 95%;
+    margin: 1%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    background-color: white;
+    border-radius: 6px;
+}
+
+.titulo-categoria{
+    height: auto;
+    width: 95%;
+}
+
+.desc-categoria{
+    height: 45%;
+    width: 95%;
+}
+
+.desc-categoria textarea{ height: 100%; }
+
+.eventos-categoria{
+    height: 15%;
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.descricao-funcionalidade{
+    height: 90%;
+    width: 95%;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    color: white;
+}

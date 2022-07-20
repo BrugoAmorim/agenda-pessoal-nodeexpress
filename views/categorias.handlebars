@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas tarefas</title>
+    <link rel="stylesheet" href="/css/categorias.css">
+    <link rel="stylesheet" href="/css/barranavegacao.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav>
+        <div class="container-titulo">
+            <h1>Minhas tarefas</h1>
+        </div>
+        <div class="links">
+            <div class="outras-funcionalidades">
+                <a href="/agenda-contatos">Meus contatos</a> -
+                <a href="/agenda-blocodenotas">Minhas anotações</a>
+            </div>
+            <div class="voltar">
+                <a href="/">Voltar</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="minhas-categorias">
+            <div class="evento">
+                <div class="descricao-funcionalidade">
+                    <p class="lead">
+                      Crie categorias para dividir os tipos de afazeres, assim você poderá separar as tarefas de casa dás do trabalho, evitando a confusão na hora de realizá-las. 
+                    </p>
+                    <button class="btn btn-success w-10">Criar</button>
+                </div>
+            </div>
+            <div class="bloco-categorias">
+                <div class="listagem-categorias">
+                    <div class="categoria">
+                        <div class="titulo-categoria">
+                            <input type="text" class="form-control" placeholder="Titulo da categoria">
+                        </div>
+                        <div class="desc-categoria">
+                            <textarea class="form-control" cols="30" rows="10" placeholder="Escreva um descrição sobre esta categoria"></textarea>
+                        </div>
+                        <div class="eventos-categoria">
+                            <div>
+                                <button class="btn btn-danger m-1">Apagar</button>
+                                <button class="btn btn-primary m-1">Salvar</button>
+                            </div>
+                            <button class="btn btn-dark m-1 ">Tarefas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

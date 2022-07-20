@@ -59,6 +59,6 @@ servidor.put('/editar-texto/:id', blocodenotas.editarAnotacao);
 servidor.delete('/apagar-texto/:id', blocodenotas.apagarAnotacao);
 
 // Rotas para gerenciar os metodos categorias
-servidor.get('/agenda-categorias', categorias.listarCategorias);
+servidor.get('/agenda-listadetarefas', categorias.listarCategorias);
 
 servidor.post('/adicionar-categoria', categorias.adicionarCategoria);
