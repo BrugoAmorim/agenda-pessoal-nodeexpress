@@ -4,6 +4,9 @@ body{
 }
 
 .container{
+    height: 100%;
+    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,41 +14,40 @@ body{
 
 .minhas-categorias{
     height: 90%;
-    width: 85%;
+    width: 100%;
     
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
 
     background-color: #191919;
 }
 
-.evento{
+.bloco-add-categoria{
     height: 95%;
-    width: 25%;
+    width: 43%;
 
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .bloco-categorias{
     height: 95%;
-    width: 70%;
+    width: 55%;
     
     display: block;
     overflow-y: auto;
 
-    border-left: 1px solid white;
+    border-left: 2px solid white;
 }
 
 .listagem-categorias{
     height: 100%;
     width: 100%;
-    padding: 2%;
-    
+
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -88,15 +90,73 @@ body{
     justify-content: space-between;
 }
 
-.descricao-funcionalidade{
-    height: 90%;
+.form-criar-categoria{
+    height: 50%;
+    width: 95%;
+    margin: 1%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    border-radius: 8px;
+    border: 1px solid silver;
+    background-color: white;
+}
+
+.titulo{
+    height: auto;
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+}
+
+.descricao{
+    height: 50%;
+    width: 95%;
+}
+
+.descricao textarea{
+    height: 100%;
+}
+
+.criar{
+    height: auto;
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.message-error{
+    min-height: 15%;
+    height: 15%;
+    width: auto;
+    margin: 1%;
+    padding: 2%;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    border-radius: 8px;
+    border: 2px solid red;
+}
+
+.desc-funcionalidade{
+    height: 25%;
     width: 95%;
 
     display: flex;
     text-align: center;
     align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
+    text-decoration: dotted;
+    justify-content: center;
 
     color: white;
 }

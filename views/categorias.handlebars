@@ -17,7 +17,7 @@
         <div class="links">
             <div class="outras-funcionalidades">
                 <a href="/agenda-contatos">Meus contatos</a> -
-                <a href="/agenda-blocodenotas">Minhas anotações</a>
+                <a href="/agenda-blocodenotas">Bloco de notas</a>
             </div>
             <div class="voltar">
                 <a href="/">Voltar</a>
@@ -26,31 +26,46 @@
     </nav>
     <div class="container">
         <div class="minhas-categorias">
-            <div class="evento">
-                <div class="descricao-funcionalidade">
-                    <p class="lead">
-                      Crie categorias para dividir os tipos de afazeres, assim você poderá separar as tarefas de casa dás do trabalho, evitando a confusão na hora de realizá-las. 
-                    </p>
-                    <button class="btn btn-success w-10">Criar</button>
+            <div class="bloco-add-categoria">
+                <form action="/adicionar-categoria" method="post" class="form-criar-categoria">
+                    <div class="titulo">
+                        <input type="text" name="nome" value="{{form.nome}}" class="form-control" placeholder="Titulo desta categoria">
+                    </div>
+                    <div class="descricao">
+                        <textarea name="descricao" class="form-control" placeholder="Escreva uma descrição sobre esta categoria" cols="30" rows="10">{{form.descricao}}</textarea>
+                    </div>
+                    <div class="criar">
+                        <button class="btn btn-success m-1">Criar</button>
+                    </div>
+                </form>
+                <div class="desc-funcionalidade">
+                    <p class="lead">O sistema permite com que você crie categorias para dividir os tipos de afazeres, assim você poderá separar as tarefas de casa dás do trabalho, evitando a confusão na hora de realizá-las.</p>
                 </div>
+                {{#if erro}}
+                    <div class="message-error">
+                        <span class="lead">{{msg}}</span>
+                    </div>
+                {{/if}}
             </div>
             <div class="bloco-categorias">
-                <div class="listagem-categorias">
-                    <div class="categoria">
-                        <div class="titulo-categoria">
-                            <input type="text" class="form-control" placeholder="Titulo da categoria">
-                        </div>
-                        <div class="desc-categoria">
-                            <textarea class="form-control" cols="30" rows="10" placeholder="Escreva um descrição sobre esta categoria"></textarea>
-                        </div>
-                        <div class="eventos-categoria">
-                            <div>
-                                <button class="btn btn-danger m-1">Apagar</button>
-                                <button class="btn btn-primary m-1">Salvar</button>
+                <div id="lista-categorias" class="listagem-categorias">
+                    {{#each Docs}}
+                        <div class="categoria">
+                            <div class="titulo-categoria">
+                                <input type="text" value="{{nome}}" class="form-control" placeholder="Titulo desta categoria">
                             </div>
-                            <button class="btn btn-dark m-1 ">Tarefas</button>
+                            <div class="desc-categoria">
+                                <textarea class="form-control" cols="30" rows="10" placeholder="Escreva uma descrição sobre esta categoria">{{descricao}}</textarea>
+                            </div>
+                            <div class="eventos-categoria">
+                                <div style="width: auto;">
+                                    <button class="btn btn-danger m-1">Apagar</button>
+                                    <button class="btn btn-primary m-1">Salvar</button>
+                                </div>
+                                <button class="btn btn-dark m-1 ">Tarefas</button>
+                            </div>
                         </div>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
