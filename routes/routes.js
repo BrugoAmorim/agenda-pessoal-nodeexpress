@@ -62,3 +62,5 @@ servidor.delete('/apagar-texto/:id', blocodenotas.apagarAnotacao);
 servidor.get('/agenda-listadetarefas', categorias.listarCategorias);
 
 servidor.post('/adicionar-categoria', categorias.adicionarCategoria);
+
+servidor.put('/editar-categoria/:id', categorias.editarCategoria);
