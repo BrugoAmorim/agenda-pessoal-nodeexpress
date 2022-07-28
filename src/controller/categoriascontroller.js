@@ -3,6 +3,9 @@ const db = require('../models/bd.js').mongoose;
 const ModelCategorias = require('../models/categorias.js').Categorias;
 const Categorias = db.model('categorias', ModelCategorias);
 
+const ModelsTarefas = require('../models/tarefas.js').Tarefas;
+const Tarefas = db.model('tarefas', ModelsTarefas);
+
 // business
 const validar = require('../services/categoriasservices.js');
 
@@ -59,4 +62,28 @@ async function editarCategoria(req, res){
     }
 }
 
-module.exports = { listarCategorias, adicionarCategoria, editarCategoria };
+async function apagarCategoria(req, res){
+
+    let validarCategoria = await validar.deletarCategoria(req.params.idcategoria);
+    if(validarCategoria.erro == true){
+
+        return res.status(400).json({ erro: validarCategoria.msg, codigo: 400 });
+    }
+    else{
+
+        let idCategoria = req.params.idcategoria;
+
+        let minhastarefas = await Tarefas.find({ idcategoria: idCategoria }).exec();
+        minhastarefas.map(async (doc) => {
+
+            await Tarefas.findOneAndDelete({ _id: doc._id });
+        }); 
+
+        await Categorias.findByIdAndDelete({ _id: idCategoria }).then(() => {
+
+            return res.status(200).json({ msg: "Esta categoria foi excluida com êxito", codigo: 200 });
+        })
+    }
+}
+
+module.exports = { listarCategorias, adicionarCategoria, editarCategoria, apagarCategoria };

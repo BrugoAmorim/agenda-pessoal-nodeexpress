@@ -64,3 +64,5 @@ servidor.get('/agenda-listadetarefas', categorias.listarCategorias);
 servidor.post('/adicionar-categoria', categorias.adicionarCategoria);
 
 servidor.put('/editar-categoria/:id', categorias.editarCategoria);
+
+servidor.delete('/apagar-categoria/:idcategoria', categorias.apagarCategoria);

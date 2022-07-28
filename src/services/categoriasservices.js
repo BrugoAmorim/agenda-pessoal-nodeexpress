@@ -40,4 +40,14 @@ async function atualizacaoCategoria(req, idCategoria){
     return req;
 }
 
-module.exports = { novaCategoria, atualizacaoCategoria };
+async function deletarCategoria(id){
+
+    const doc = await Categorias.findOne({ _id: id });
+    
+    if(doc == null)
+        return { erro: true, msg: "Esta categoria não foi encontrada!" };
+
+    return { erro: false };
+}
+
+module.exports = { novaCategoria, atualizacaoCategoria, deletarCategoria };
