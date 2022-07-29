@@ -1,22 +1,23 @@
 
-const servidor = require('../server.js').app;
+const server = require('../server.js').app;
 
 // controllers
-const contatos = require('../src/controller/contatoscontroller.js');
 const blocodenotas = require('../src/controller/blocodenotascontroller.js');
 const categorias = require('../src/controller/categoriascontroller.js');
+const contatos = require('../src/controller/contatoscontroller.js');
+const tarefas = require('../src/controller/tarefascontroller.js');
 
 // Home
-servidor.get('/', (req, res) => {
+server.get('/', (req, res) => {
     res.render('home');
 })
 
 // Rotas para gerenciar os contatos
-servidor.get('/agenda-contatos', contatos.verContatos);
+server.get('/agenda-contatos', contatos.verContatos);
 
-servidor.post("/novo-contato", contatos.salvarContatos);
+server.post("/novo-contato", contatos.salvarContatos);
 
-servidor.get('/informacoes-contato/:id', async (req, res) => {
+server.get('/informacoes-contato/:id', async (req, res) => {
 
     const db = require('../src/models/bd').mongoose; 
     const modelContatos = require('../src/models/contatos').SchemaContatos;
@@ -28,19 +29,19 @@ servidor.get('/informacoes-contato/:id', async (req, res) => {
     res.render('infocontato', { Docs: docs, id: _id });
 })
 
-servidor.put('/editar-informacoes/:id', contatos.editarInfoContato)
+server.put('/editar-informacoes/:id', contatos.editarInfoContato)
 
-servidor.delete('/apagar-contato/:id', contatos.apagarContato)
+server.delete('/apagar-contato/:id', contatos.apagarContato)
 
 // Rotas para gerenciar as funcionalidades do bloco de notas
-servidor.get('/agenda-blocodenotas', blocodenotas.buscarAnotacoes)
+server.get('/agenda-blocodenotas', blocodenotas.buscarAnotacoes)
 
-servidor.get('/criar-anotacao', async (req, res) => {
+server.get('/criar-anotacao', async (req, res) => {
 
     res.render('criaranotacao');
 });
 
-servidor.get('/detalhes-anotacao/:id', async (req, res) => {
+server.get('/detalhes-anotacao/:id', async (req, res) => {
 
     const db = require('../src/models/bd').mongoose;
     const SchemaBloconotas = require('../src/models/blocodenotas').SchemaBloconotas;
@@ -52,17 +53,20 @@ servidor.get('/detalhes-anotacao/:id', async (req, res) => {
     res.render('informacoesanotacao', { Campos: doc });
 })
 
-servidor.post('/adicionar', blocodenotas.novaAnotacao);
+server.post('/adicionar', blocodenotas.novaAnotacao);
 
-servidor.put('/editar-texto/:id', blocodenotas.editarAnotacao);
+server.put('/editar-texto/:id', blocodenotas.editarAnotacao);
 
-servidor.delete('/apagar-texto/:id', blocodenotas.apagarAnotacao);
+server.delete('/apagar-texto/:id', blocodenotas.apagarAnotacao);
 
 // Rotas para gerenciar os metodos categorias
-servidor.get('/agenda-listadetarefas', categorias.listarCategorias);
+server.get('/agenda-listadetarefas', categorias.listarCategorias);
 
-servidor.post('/adicionar-categoria', categorias.adicionarCategoria);
+server.post('/adicionar-categoria', categorias.adicionarCategoria);
 
-servidor.put('/editar-categoria/:id', categorias.editarCategoria);
+server.put('/editar-categoria/:id', categorias.editarCategoria);
 
-servidor.delete('/apagar-categoria/:idcategoria', categorias.apagarCategoria);
+server.delete('/apagar-categoria/:idcategoria', categorias.apagarCategoria);
+
+// Rotas para gerenciar os metodos tarefas
+server.get('/minhas-tarefas/', tarefas.buscarminhasTarefas);

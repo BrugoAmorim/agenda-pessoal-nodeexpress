@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afazeres</title>
+    <link rel="stylesheet" href="/css/tarefas.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav>
+        <div class="container-titulo">
+            <h1>Minhas tarefas</h1>
+        </div>
+        <div class="links">
+            <div class="outras-funcionalidades">
+                <a href="/agenda-contatos">Meus contatos</a> -
+                <a href="/agenda-blocodenotas">Bloco de notas</a>
+            </div>
+            <div class="voltar">
+                <a href="/">Home</a>
+                <a href="/agenda-listadetarefas">Voltar</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="bloco-descricao-categoria">
+            <h1>Ingredientes de cozinha</h1>
+            <div>
+                <p class="lead">
+                    algumas coisas q preciso comprar antes de fazer o bolo
+                </p>
+            </div>
+        </div>
+        <div class="container-minhas-tarefas">
+            <div class="bloco-nova-tarefa">
+                <div class="nova-tarefa">
+                    <div class="tarefa">
+                        <textarea class="form-control" placeholder="Escreva aqui a sua tarefa." cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="settings">
+                        <select name="" class="form-select">
+                            <option selected>Prioridade</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                        </select>
+                        <button class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bloco-tarefas">
+                <div class="sub-bloco-tarefas">
+                    <div class="lista-tarefas">
+                        <!-- informacoes estaticas temporarias -->
+                        <div class="tarefas">
+                            <div class="form-floating desc-tarefa">
+                                <textarea class="form-control h-100" placeholder="Minha tarefa" id="floatingTextarea2" style="height: 100px"></textarea>
+                                <label for="floatingTextarea2">Tarefa:</label>
+                                <span>Tarefa adicionada: 22/01/2022</span>
+                            </div>
+                            <div class="configuracoes">
+                                <div class="eventos">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Concluído
+                                        </label>
+                                    </div>
+                                    <button class="btn btn-danger">Excluir</button>
+                                </div>
+                                <div class="prioridade">
+                                    <select class="form-select">
+                                        <option selected>Prioridade</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                    </select>
+                                </div>
+                                <div class="evento-salvar">
+                                    <button class="btn btn-primary">Salvar</button>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

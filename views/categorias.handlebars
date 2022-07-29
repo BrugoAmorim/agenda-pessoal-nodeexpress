@@ -50,7 +50,7 @@
             <div class="bloco-categorias">
                 <div id="lista-categorias" class="listagem-categorias">
                     {{#each Docs}}
-                        <form action="#" method="post" class="categoria">
+                        <form action="/editar-categoria/{{Id}}?method=PUT" method="post" class="categoria">
                             <div class="titulo-categoria">
                                 <input type="text" value="{{Nome}}" name="nome" class="form-control" placeholder="Titulo desta categoria">
                             </div>
@@ -60,9 +60,9 @@
                             <div class="eventos-categoria">
                                 <div style="width: auto;">
                                     <button formaction="/apagar-categoria/{{Id}}?method=DELETE" class="btn btn-danger m-1">Apagar</button>
-                                    <button formaction="/editar-categoria/{{Id}}?method=PUT" class="btn btn-primary m-1">Salvar</button>
+                                    <button class="btn btn-primary m-1">Salvar</button>
                                 </div>
-                                <button class="btn btn-dark m-1 ">Tarefas</button>
+                                <button formaction="/minhas-tarefas/{{Id}}" formmethod="get" class="btn btn-dark m-1 ">Tarefas</button>
                             </div>
                         </form>
                     {{/each}}
