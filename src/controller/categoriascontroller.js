@@ -9,11 +9,20 @@ const Tarefas = db.model('tarefas', ModelsTarefas);
 // business
 const validar = require('../services/categoriasservices.js');
 
+// utils
+const conversor = require('../utils/categoriasutils.js');
+
 async function listarCategorias(req, res){
 
     await Categorias.find({}).lean().exec().then((docs) => {
 
-        res.render('categorias', { Docs: docs });
+        let colecao = [];
+        docs.map((item) => {
+
+            colecao.push(conversor.criarmodeloresponse(item));
+        })
+
+        res.render('categorias', { Docs: colecao });
     });
 
 }
@@ -43,21 +52,23 @@ async function editarCategoria(req, res){
     const result = await validar.atualizacaoCategoria(req.body, idCategoria);
     if(result.erro == true){
         
-        return res.status(400).json({ erro: result.msg, codigo: 400 });
+        Categorias.find().lean().exec().then((docs) => {
+
+            const colecao = [];
+            docs.map((item) => {
+
+                colecao.push(conversor.criarmodeloresponse(item));
+            })
+
+            res.render('categorias', { erro: true, msg: result.msg, Docs: colecao });
+        })
     }
     else{
 
         const { nome, descricao } = result;
 
-        await Categorias.findByIdAndUpdate({_id: idCategoria}, { $set:{ nome, descricao }}, { new: true }).then((doc) => {
-
-            let resultado = {
-                id: doc._id.toString(),
-                nome: doc.nome,
-                descricao: doc.descricao
-            }
-
-            return res.status(200).json(resultado);
+        await Categorias.findByIdAndUpdate({_id: idCategoria}, { $set:{ nome, descricao }}, { new: true }).then(() => {
+            res.redirect('/agenda-listadetarefas');
         })
     }
 }
@@ -67,7 +78,7 @@ async function apagarCategoria(req, res){
     let validarCategoria = await validar.deletarCategoria(req.params.idcategoria);
     if(validarCategoria.erro == true){
 
-        return res.status(400).json({ erro: validarCategoria.msg, codigo: 400 });
+        res.render('categorias', { erro: true, msg: validarCategoria.msg });
     }
     else{
 
@@ -81,7 +92,7 @@ async function apagarCategoria(req, res){
 
         await Categorias.findByIdAndDelete({ _id: idCategoria }).then(() => {
 
-            return res.status(200).json({ msg: "Esta categoria foi excluida com êxito", codigo: 200 });
+            res.redirect('/agenda-listadetarefas');
         })
     }
 }

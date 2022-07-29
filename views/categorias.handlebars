@@ -50,21 +50,21 @@
             <div class="bloco-categorias">
                 <div id="lista-categorias" class="listagem-categorias">
                     {{#each Docs}}
-                        <div class="categoria">
+                        <form action="#" method="post" class="categoria">
                             <div class="titulo-categoria">
-                                <input type="text" value="{{nome}}" class="form-control" placeholder="Titulo desta categoria">
+                                <input type="text" value="{{Nome}}" name="nome" class="form-control" placeholder="Titulo desta categoria">
                             </div>
                             <div class="desc-categoria">
-                                <textarea class="form-control" cols="30" rows="10" placeholder="Escreva uma descrição sobre esta categoria">{{descricao}}</textarea>
+                                <textarea class="form-control" name="descricao" cols="30" rows="10" placeholder="Escreva uma descrição sobre esta categoria">{{Descricao}}</textarea>
                             </div>
                             <div class="eventos-categoria">
                                 <div style="width: auto;">
-                                    <button class="btn btn-danger m-1">Apagar</button>
-                                    <button class="btn btn-primary m-1">Salvar</button>
+                                    <button formaction="/apagar-categoria/{{Id}}?method=DELETE" class="btn btn-danger m-1">Apagar</button>
+                                    <button formaction="/editar-categoria/{{Id}}?method=PUT" class="btn btn-primary m-1">Salvar</button>
                                 </div>
                                 <button class="btn btn-dark m-1 ">Tarefas</button>
                             </div>
-                        </div>
+                        </form>
                     {{/each}}
                 </div>
             </div>
