@@ -2,11 +2,15 @@
 function formatarData(req){
 
     let mes = req.getMonth() + 1;
+    let dia = req.getDate();
 
     if(mes < 10)
         mes = '0' + mes;
 
-    let dataemString = req.getDate() + '/' + mes + '/' + req.getFullYear();
+    if(dia < 10)
+        dia = '0' + dia;
+
+    let dataemString = dia + '/' + mes + '/' + req.getFullYear();
     return dataemString;
 }
 
@@ -46,4 +50,4 @@ function ordenarAnotacoes(req, query){
         return req;
 }
 
-module.exports = { criarModel, ordenarAnotacoes };
+module.exports = { criarModel, ordenarAnotacoes, formatarData };

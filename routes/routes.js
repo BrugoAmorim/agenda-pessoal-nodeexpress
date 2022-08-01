@@ -69,4 +69,4 @@ server.put('/editar-categoria/:id', categorias.editarCategoria);
 server.delete('/apagar-categoria/:idcategoria', categorias.apagarCategoria);
 
 // Rotas para gerenciar os metodos tarefas
-server.get('/minhas-tarefas/', tarefas.buscarminhasTarefas);
+server.get('/minhas-tarefas/:idCat', tarefas.buscarminhasTarefas);
