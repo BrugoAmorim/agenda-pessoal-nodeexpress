@@ -35,41 +35,40 @@
         </div>
         <div class="container-minhas-tarefas">
             <div class="bloco-nova-tarefa">
-                <div class="nova-tarefa">
+                <form class="nova-tarefa" action="/adicionar-tarefa/{{Categoria.Id}}" method="post">
                     <div class="tarefa">
-                        <textarea class="form-control" placeholder="Escreva aqui a sua tarefa." cols="30" rows="10"></textarea>
+                        <textarea name="tarefa" class="form-control" placeholder="Escreva aqui a sua tarefa." cols="30" rows="10"></textarea>
                     </div>
                     <div class="settings">
-                        <select name="" class="form-select">
+                        <select name="prioridade" class="form-select">
                             <option selected>Prioridade</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                            <option value="">4</option>
-                            <option value="">5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                         <button class="btn btn-success">Adicionar</button>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="bloco-tarefas">
                 <div class="sub-bloco-tarefas">
                     <div class="lista-tarefas">
-                        <!-- informacoes estaticas temporarias -->
                         {{#each Docs}}
                         <div class="tarefas">
                             <div class="form-floating desc-tarefa">
-                                <textarea class="form-control h-100" placeholder="Minha tarefa" id="floatingTextarea2" style="height: 100px">{{tarefa}}</textarea>
+                                <textarea class="form-control h-100" placeholder="Minha tarefa" id="floatingTextarea2" style="height: 100px">{{Tarefa}}</textarea>
                                 <label for="floatingTextarea2">Tarefa:</label>
-                                <span>Tarefa adicionada: {{adicionada}}</span>
+                                <span>Tarefa adicionada: {{Adicionada}}</span>
                             </div>
                             <div class="configuracoes">
                                 <div class="eventos">
                                     <div class="form-check">
-                                        {{#if concluida}}
-                                            <input class="form-check-input" type="checkbox" value="{{concluida}}" id="flexCheckDefault" checked>
+                                        {{#if Concluida}}
+                                            <input class="form-check-input" type="checkbox" value="{{Concluida}}" id="flexCheckDefault" checked>
                                         {{else}}
-                                            <input class="form-check-input" type="checkbox" value="{{concluida}}" id="flexCheckDefault">                                 
+                                            <input class="form-check-input" type="checkbox" value="{{Concluida}}" id="flexCheckDefault">                                 
                                         {{/if}}    
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Concluído
@@ -79,7 +78,7 @@
                                 </div>
                                 <div class="prioridade">
                                     <select class="form-select">
-                                        <option selected>Prioridade: {{prioridade}}</option>
+                                        <option selected>Prioridade: {{Prioridade}}</option>
                                         <option value="">1</option>
                                         <option value="">2</option>
                                         <option value="">3</option>

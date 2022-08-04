@@ -10,7 +10,7 @@ const Tarefas = db.model('tarefas', ModelsTarefas);
 const validar = require('../services/categoriasservices.js');
 
 // utils
-const conversor = require('../utils/categoriasutils.js');
+const conversor = require('../utils/categoriasEtarefasutils.js');
 
 async function listarCategorias(req, res){
 
@@ -19,7 +19,7 @@ async function listarCategorias(req, res){
         let colecao = [];
         docs.map((item) => {
 
-            colecao.push(conversor.criarmodeloresponse(item));
+            colecao.push(conversor.ModelResponseCategoria(item));
         })
 
         res.render('categorias', { Docs: colecao });
@@ -57,7 +57,7 @@ async function editarCategoria(req, res){
             const colecao = [];
             docs.map((item) => {
 
-                colecao.push(conversor.criarmodeloresponse(item));
+                colecao.push(conversor.ModelResponseCategoria(item));
             })
 
             res.render('categorias', { erro: true, msg: result.msg, Docs: colecao });

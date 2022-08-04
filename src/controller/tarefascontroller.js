@@ -9,12 +9,12 @@ const ModelsCategorias = require('../models/categorias.js').Categorias;
 const Categorias = db.model('categorias', ModelsCategorias);
 
 // utils
-const conversorCat = require('../utils/categoriasutils.js');
+const conversor = require('../utils/categoriasEtarefasutils.js');
 
 async function buscarminhasTarefas(req, res){
 
     const doc = await Categorias.findOne({ _id: req.params.idCat }).lean().exec();
-    const infoCategoria = conversorCat.criarmodeloresponse(doc);
+    const infoCategoria = conversor.ModelResponseCategoria(doc);
 
     await Tarefas.find({ idcategoria: req.params.idCat }).lean().exec().then((docs) => {
 
@@ -23,19 +23,14 @@ async function buscarminhasTarefas(req, res){
         let colecao = [];
         docs.map((item) => {
 
-            let obj = {
-                id : item._id.toString(),
-                tarefa : item.tarefa,
-                concluida : item.concluida,
-                prioridade : item.prioridade,
-                adicionada : formatarData(item.adicionada),
-                idcategoria : item.idcategoria
-            }
+            let obj = conversor.ModelResponseTarefa(item);
+            obj.Adicionada = formatarData(obj.Adicionada);
+
             colecao.push(obj);
         })
 
         colecao = colecao.sort((a, b) => {
-            if(a.prioridade > b.prioridade)
+            if(a.Prioridade > b.Prioridade)
                 return -1;
         })
 
@@ -43,4 +38,15 @@ async function buscarminhasTarefas(req, res){
     })
 }
 
-module.exports = { buscarminhasTarefas }
+async function adicionarnovaTarefa(req, res){
+
+    let idCategoria = req.params.idCat;
+    const reqTarefas = conversor.ModelRequestTarefa(req.body, idCategoria);
+
+    await Tarefas.insertMany(reqTarefas).then(() => {
+
+        res.redirect('/minhas-tarefas/' + idCategoria);
+    })
+}
+
+module.exports = { buscarminhasTarefas, adicionarnovaTarefa }

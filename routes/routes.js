@@ -70,3 +70,5 @@ server.delete('/apagar-categoria/:idcategoria', categorias.apagarCategoria);
 
 // Rotas para gerenciar os metodos tarefas
 server.get('/minhas-tarefas/:idCat', tarefas.buscarminhasTarefas);
+
+server.post('/adicionar-tarefa/:idCat', tarefas.adicionarnovaTarefa);
