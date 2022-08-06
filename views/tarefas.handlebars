@@ -51,6 +51,11 @@
                         <button class="btn btn-success">Adicionar</button>
                     </div>
                 </form>
+                {{#if erro}}
+                    <div class="message-error">
+                        <span class="lead">{{msg}}</span>
+                    </div>
+                {{/if}}
             </div>
             <div class="bloco-tarefas">
                 <div class="sub-bloco-tarefas">
