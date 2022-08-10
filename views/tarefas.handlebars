@@ -61,9 +61,9 @@
                 <div class="sub-bloco-tarefas">
                     <div class="lista-tarefas">
                         {{#each Docs}}
-                        <div class="tarefas">
+                        <form action="/atualizar-tarefa/{{../Categoria.Id}}/{{Idtarefa}}?method=PUT" method="post" class="tarefas">
                             <div class="form-floating desc-tarefa">
-                                <textarea class="form-control h-100" placeholder="Minha tarefa" id="floatingTextarea2" style="height: 100px">{{Tarefa}}</textarea>
+                                <textarea name="tarefa" class="form-control h-100" placeholder="Minha tarefa" id="floatingTextarea2" style="height: 100px">{{Tarefa}}</textarea>
                                 <label for="floatingTextarea2">Tarefa:</label>
                                 <span>Tarefa adicionada: {{Adicionada}}</span>
                             </div>
@@ -71,31 +71,31 @@
                                 <div class="eventos">
                                     <div class="form-check">
                                         {{#if Concluida}}
-                                            <input class="form-check-input" type="checkbox" value="{{Concluida}}" id="flexCheckDefault" checked>
+                                            <input name="concluida" class="form-check-input" type="checkbox" value="{{Concluida}}" id="flexCheckDefault" checked>
                                         {{else}}
-                                            <input class="form-check-input" type="checkbox" value="{{Concluida}}" id="flexCheckDefault">                                 
+                                            <input name="concluida" class="form-check-input" type="checkbox" value="{{Concluida}}" id="flexCheckDefault">                                 
                                         {{/if}}    
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Concluído
                                         </label>
                                     </div>
-                                    <button class="btn btn-danger">Excluir</button>
+                                    <button formaction="/excluir-tarefa/{{../Categoria.Id}}/{{Idtarefa}}?method=DELETE" class="btn btn-danger">Excluir</button>
                                 </div>
                                 <div class="prioridade">
-                                    <select class="form-select">
-                                        <option selected>Prioridade: {{Prioridade}}</option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                        <option value="">4</option>
-                                        <option value="">5</option>
+                                    <select name="prioridade" class="form-select">
+                                        <option value="{{Prioridade}}" selected>Prioridade: {{Prioridade}}</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </select>
                                 </div>
                                 <div class="evento-salvar">
                                     <button class="btn btn-primary">Salvar</button>
                                 </div>
                             </div>
-                        </div> 
+                        </form> 
                         {{/each}}
                     </div>
                 </div>

@@ -72,3 +72,7 @@ server.delete('/apagar-categoria/:idcategoria', categorias.apagarCategoria);
 server.get('/minhas-tarefas/:idCat', tarefas.buscarminhasTarefas);
 
 server.post('/adicionar-tarefa/:idCat', tarefas.adicionarnovaTarefa);
+
+server.delete('/excluir-tarefa/:idCat/:idTar', tarefas.excluirTarefa);
+
+server.put('/atualizar-tarefa/:idCat/:idTar', tarefas.atualizarTarefa);

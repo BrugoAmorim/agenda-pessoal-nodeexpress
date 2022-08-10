@@ -80,4 +80,28 @@ async function adicionarnovaTarefa(req, res){
     }
 }
 
-module.exports = { buscarminhasTarefas, adicionarnovaTarefa }
+async function excluirTarefa(req, res){
+
+    const idTarefa = req.params.idTar;
+    const idCategoria = req.params.idCat;
+
+    await Tarefas.findOneAndDelete({ _id: idTarefa, idcategoria: idCategoria }).then(() => {
+
+        res.redirect('/minhas-tarefas/' + idCategoria);
+    })
+}
+
+async function atualizarTarefa(req, res){
+
+    const idTarefa = req.params.idTar;
+    const idCategoria = req.params.idCat;
+
+    const { tarefa, prioridade } = req.body;
+    
+    await Tarefas.findOneAndUpdate({ _id: idTarefa, idcategoria: idCategoria }, { $set:{ tarefa, prioridade }}, { new: true }).then(() => {
+
+        res.redirect('/minhas-tarefas/' + idCategoria);
+    })
+}
+
+module.exports = { buscarminhasTarefas, adicionarnovaTarefa, excluirTarefa, atualizarTarefa };
