@@ -97,11 +97,15 @@ async function atualizarTarefa(req, res){
     const idCategoria = req.params.idCat;
 
     const { tarefa, prioridade } = req.body;
-    
-    await Tarefas.findOneAndUpdate({ _id: idTarefa, idcategoria: idCategoria }, { $set:{ tarefa, prioridade }}, { new: true }).then(() => {
+
+    let { concluida } = req.body;
+    if(concluida === undefined)
+        concluida = false;
+
+    await Tarefas.findOneAndUpdate({ _id: idTarefa, idcategoria: idCategoria }, { $set:{ tarefa, prioridade, concluida }}).then(() => {
 
         res.redirect('/minhas-tarefas/' + idCategoria);
-    })
+    }) 
 }
 
 module.exports = { buscarminhasTarefas, adicionarnovaTarefa, excluirTarefa, atualizarTarefa };
